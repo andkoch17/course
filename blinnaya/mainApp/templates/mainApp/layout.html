@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blinnaya#1</title>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mainApp/css/bootstrap.min.css' %}" type="text/css">
+</head>
+<body>
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md- mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal"><a class="p-5 text-dark" href="{% url 'mainApp:index' %}">Блинная Номер один!</a>
+    </h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-5 text-dark" href="{% url 'cart:cart_detail' %}">Корзина</a>
+        <a class="p-5 text-dark" href="{% url 'mainApp:contact' %}">Контакты</a>
+    </nav>
+</div>
+
+    {%block content%}
+
+    {% endblock %}
+
+<footer class="pt-4 my-md-4 pt-md-5 border-top">
+    <div class="container">
+        <h1>Приятного аппетита!</h1>
+    </div>
+</footer>
+</div>
+
+
+</body>
+
+</html>

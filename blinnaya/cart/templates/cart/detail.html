@@ -1,0 +1,42 @@
+{% extends "mainApp/layout.html" %}
+{% block content %}
+    <div class="container">
+        {% if cart|length > 0 %}
+            <h1>Ваша корзина</h1>
+            <table class="cart">
+                <thead>
+                <tr>
+                    <th>Название блина</th>
+                    <th>Количество</th>
+                    <th>Цена за шт.</th>
+                    <th>Общая цена</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in cart %}
+                    {% with pancake=item.pancake %}
+                        <tr>
+                            <td>{{ pancake.name }}</td>
+                            <td>{{ item.amount }}</td>
+                            <td class="num">{{ item.price }} р</td>
+                            <td class="num">{{ item.total_price }} р</td>
+                            <td><a href="{% url 'cart:cart_remove' pancake_id=pancake.id %}">Убрать</a></td>
+                        </tr>
+                    {% endwith %}
+                {% endfor %}
+                <tr class="total">
+                    <td>Всего</td>
+                    <td colspan="2"></td>
+                    <td class="num">{{ cart.get_total_price }} р</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="text-right">
+                <a href="{% url 'mainApp:index' %}" class="p-5 text-dark">Продолжить покупки</a>
+                <a href="{% url 'mainApp:make_order' %}" class="p-5 text-dark">Оформить заказ</a>
+            </p>
+        {% else %}
+            <h1>Ваша корзина пуста</h1>
+        {% endif %}
+    </div>
+{% endblock %}

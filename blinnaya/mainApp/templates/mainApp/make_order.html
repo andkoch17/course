@@ -1,0 +1,36 @@
+{% extends "mainApp/layout.html" %}
+
+{% block content %}
+    <h1>Корзина</h1>
+    <div class="container">
+        
+        <div class="content-section">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Детали заказа</legend>
+                    <div class="form-group">
+                        <p class="form-control-label">Улица</p>
+                        <input name="street" placeholder="Улица" type="text" class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group">
+                        <p class="form-control-label">Номер дома</p>
+                        <input name="house_number" placeholder="Номер дома" type="text" class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group">
+                        <p class="form-control-label">Квартира</p>
+                        <input name="apartment_number" placeholder="Квартира" type="text" class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group">
+                        <p class="form-control-label">Комментарии</p>
+                        <input name="comment" placeholder="Комментарий" type="textarea" class="form-control form-control-lg">
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-dark">Оформить заказ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+{% endblock %}

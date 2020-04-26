@@ -1,0 +1,36 @@
+{% extends "mainApp/layout.html" %}
+
+{% block content %}
+   
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+    {% for pancake in pancakes %}
+        
+        {% if forloop.counter|divisibleby:3 %}
+                </div>
+            </div>
+            <div class="container">
+                <div class="card-deck mb-3 text-center">
+        {% endif %}
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ pancake.name }}</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title"><small class="text-muted">{{ pancake.price }}р</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>{{ pancake.description }}</li>
+                </ul>
+                <form action="{% url 'cart:cart_add' pancake_id=pancake.id %}" method="post">
+                    {{ cart_pancake_form }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-lg btn-block btn-primary add-to-cart" data-id="{{ pancake.id }}">Добавить в корзину</button>
+                </form>
+                
+            </div>
+        </div>
+    {% endfor %}
+        </div>
+    </div>
+    
+{% endblock %}
